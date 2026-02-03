@@ -1,11 +1,15 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Product, { menu } from "./components/Product/Product";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 
 export default function Home() {
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleNext = () => {
     setCurrentProductIndex((prev) => (prev + 1) % menu.length);
