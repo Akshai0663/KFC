@@ -1,0 +1,82 @@
+.navbar {
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5vw;
+  background: transparent;
+  color: #fff;
+}
+
+.logo img {
+  width: 48px;
+}
+
+/* Desktop Menu */
+.nav-links {
+  display: flex;
+  gap: clamp(1.5rem, 4vw, 5rem);
+  list-style: none;
+  font-weight: 500;
+}
+
+.nav-links li {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-links li:hover {
+  color: #541212;
+}
+
+.signin-btn {
+  background: #fff;
+  color: #541212;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.signin-btn:hover {
+  background: #541212;
+  color: #fff;
+}
+
+/* Mobile Menu Button */
+.menu-btn {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Mobile Navbar */
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0;
+    gap: 1.5rem;
+    display: none;
+    /* Hide menu links on mobile */
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}

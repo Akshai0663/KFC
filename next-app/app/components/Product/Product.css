@@ -1,0 +1,208 @@
+.product {
+    min-height: 100vh;
+    min-height: 100dvh;
+    /* Use dvh for mobile browsers */
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    overflow: hidden;
+    touch-action: none;
+    /* Prevent native scroll/zoom on mobile */
+}
+
+/* Gradient Layer */
+.gradient-wrapper,
+.product-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+/* Background Blobs */
+.bg {
+    position: absolute;
+    width: clamp(150px, 20vw, 400px);
+    height: clamp(150px, 20vw, 400px);
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.bg0 {
+    top: -10%;
+    right: -10%;
+}
+
+.bg1 {
+    bottom: -15%;
+    left: 10%;
+}
+
+.bg2 {
+    top: -20%;
+    right: 30%;
+}
+
+.bg3 {
+    top: 20%;
+    left: -10%;
+}
+
+.bg4 {
+    bottom: -10%;
+    right: 20%;
+}
+
+/* Product Content */
+.product-content {
+    z-index: 3;
+    /* Lift above big text */
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.drink-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+    text-transform: uppercase;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.drink-subtext {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: #ffd700;
+    /* Gold color for subtext to pop */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.product-text {
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Product Image */
+.product-img {
+    z-index: 2;
+    /* Content is 3, Image is 2, Big Text 1 */
+    width: min(100%, 550px);
+    height: auto;
+    filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.6));
+    transition: transform 0.4s ease;
+}
+
+.product-img:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+/* Arrows */
+.arrows {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1.5rem;
+    z-index: 10;
+}
+
+.arrow {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.arrow:hover {
+    background: white;
+    color: black;
+    transform: scale(1.1);
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN (Fail-Safe Flexbox)
+   ========================================= */
+
+/* Tablet (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+    .product {
+        flex-direction: column;
+        justify-content: center;
+        /* Center content vertically */
+        text-align: center;
+        padding: 8rem 2rem 4rem 2rem;
+        /* Top padding for navbar */
+        gap: 3rem;
+        /* Space between text and image */
+    }
+
+    .product-content {
+        align-items: center;
+        /* Center text horizontally */
+        width: 100%;
+        max-width: 600px;
+        order: 2;
+        /* Image on top? Or text on top? Standard is image first on mobile often, or keep text top. Let's keep text top per original */
+    }
+
+    .product-img {
+        width: min(80%, 400px);
+        /* Reduce image size on tablet */
+    }
+}
+
+/* Mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .product {
+        padding: 2rem 1.5rem 6rem 1.5rem;
+        /* Reduced top padding significantly (was 6rem) */
+        gap: 2rem;
+    }
+
+    .product-img {
+        width: min(90%, 320px);
+    }
+
+
+    .bg {
+        opacity: 0.15;
+        /* Reduce blob opacity */
+    }
+
+
+
+    .product-content {
+        gap: 1rem;
+    }
+}
+
+/* Small Mobile (max-width: 380px) */
+@media screen and (max-width: 380px) {
+    .drink-title {
+        font-size: 2rem;
+        /* Force smaller title */
+    }
+
+    .product-img {
+        width: 100%;
+    }
+}
